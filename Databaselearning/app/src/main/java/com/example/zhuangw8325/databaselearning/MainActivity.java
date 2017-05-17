@@ -1,5 +1,7 @@
 package com.example.zhuangw8325.databaselearning;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,18 +45,31 @@ public class MainActivity extends AppCompatActivity {
 
     public void viewData(View v){
         Cursor res = myDb.getAllData();
-        if(res.getCount() == 0){
+        if(res.getCount() == 0) {
             showMessage("Error", "No data found in database");
-
+            return;
         }
 
-
         StringBuffer buffer = new StringBuffer();
-
+        res.moveToFirst();
+        for(res.moveToFirst();!res.isAfterLast();res.moveToNext()){
+            for(int i = 0; i<res.getColumnCount();i++){
+                buffer.append(res.getString(i) + "  ");
+            }
+            buffer.append("\n");
+        }
         showMessage("Data", buffer.toString());
     }
 
-    public void showMessage(String s, String b){
-
+    public void showMessage(String Title, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message).setTitle(Title)
+            .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                //do nothing kek
+            }
+        });
+        builder.show();
     }
 }
