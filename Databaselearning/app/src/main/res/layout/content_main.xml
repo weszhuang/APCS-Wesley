@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,8 +8,97 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.zhuangw8325.databaselearning.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context="com.example.zhuangw8325.databaselearning.MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Name:"
+        android:id="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="78dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_Name"
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD DATA"
+        android:id="@+id/button_add"
+        android:clickable="true"
+        android:onClick="addData"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="46dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_Age"
+        android:layout_below="@+id/editText_Name"
+        android:layout_alignEnd="@+id/editText_Name"
+        android:layout_marginTop="57dp"
+        android:layout_toEndOf="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Age"
+        android:id="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/editText_Age"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Address:"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_address"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignEnd="@+id/editText_Age"
+        android:layout_toEndOf="@+id/button_add" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Data"
+        android:id="@+id/button_view"
+        android:layout_alignBottom="@+id/button_add"
+        android:layout_alignParentEnd="true"
+        android:onClick="viewData"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:id="@+id/button_search"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+
+        android:onClick="searchMessage"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editSearch"
+        android:layout_below="@+id/button_view"
+        android:layout_alignEnd="@+id/editText_address"
+        android:layout_toEndOf="@+id/button_add"
+        android:hint="Name"/>
 </RelativeLayout>
