@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
 
         myDb = new DataBaseHelper(this);
         //add the layout bars
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 buffer.append(res.getString(j));
                 buffer.append("\n");
             }
+            buffer.append("\n");
             res.moveToNext();
         }
         showMessage("Data", buffer.toString());
@@ -94,8 +95,7 @@ public class MainActivity extends AppCompatActivity {
         String search = editSearch.getText().toString();
         StringBuffer buffer = new StringBuffer();
         Cursor res = myDb.getAllData();
-        res.moveToFirst();
-        for (int i = 0; i < res.getCount(); i++) {
+        for (res.moveToFirst();!res.isAfterLast(); res.moveToNext()) {
             if (res.getString(1).equals(search)) {
                 for (int j = 0; j < 4; j++) {
                     buffer.append(fields[j]);
@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
                     buffer.append("\n");
                 }
             }
-            res.moveToNext();
         }
         if (buffer.toString().equals("")) {
             showMessage("No results found", "");
